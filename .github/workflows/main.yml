@@ -10,3 +10,7 @@ jobs:
         uses: dante-ev/latex-action@latest
         with:
           root_file: kokebok.tex
+      - name: GH Release
+        uses: softprops/action-gh-release@v0.1.5
+        with:
+          files: kokebok.pdf
