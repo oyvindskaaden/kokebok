@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+% Wrap text arrond figures
+\usepackage{wrapfig}
+
+% Norske oversettelser
+\usepackage[norsk]{babel}
+
+% Mer leselige fractions
+\usepackage{xfrac} % Eks \sfrac{12}{3}
+% SI units
+\usepackage[detect-weight=true, detect-family=true]{siunitx}
+% URL
+\usepackage{hyperref}
+\usepackage{xurl}
+
+% Endre på pagemargins
+\usepackage[a4paper, total={17cm, 22cm}]{geometry}
+
+\title{Kokebok}
+\author{Øyvind Skaaden}
+\date{April 2020}
+
+\begin{document}
+
+%\maketitle
+\include{brød/havrebrød}
+\include{brød/italiensk_pizza}
+\include{supper/spicy_gulrotsuppe}
+\include{fisk/laks/soyaglasert_laks}
+\include{supper/tomatsuppe}
+
+\end{document}
