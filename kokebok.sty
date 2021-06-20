@@ -1,0 +1,62 @@
+% Author Øyvind Skaaden 2021
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kokebok}[2021/06/20 kokebok]
+
+% Use UTF-8
+\usepackage[utf8]{inputenc}
+% Change page margins
+\usepackage[a4paper, total={17cm, 22cm}]{geometry}
+% Norwegian translations
+\usepackage[norsk]{babel}
+
+% Wrap text arrond figures
+%\usepackage{wrapfig}
+
+% More readable fractions
+\usepackage{xfrac} % Ex \sfrac{12}{3} creates 12/3
+
+% SI units
+\usepackage[detect-weight=true, detect-family=true]{siunitx}
+
+% URL
+\usepackage{hyperref}
+\usepackage{xurl}
+
+\makeatletter
+\newcommand\location[1]{\renewcommand\@location{#1}}
+\newcommand\@location{}
+\newcommand\short[1]{\renewcommand\@short{#1}}
+\newcommand\@short{}
+\makeatother
+
+% Titlepage
+\makeatletter
+\def\@maketitle{%
+    \pagenumbering{gobble}
+    \begin{center}
+        \vspace*{1cm}
+            
+        \Huge
+        \textbf{\@title}
+            
+        \vspace{0.5cm}
+        \LARGE
+        \@short
+            
+        \vspace{1.5cm}
+        
+        \large
+        \textbf{\@author}
+            
+        \vfill
+            
+        \Large
+        \@date \\
+        \large
+        \@location
+            
+    \end{center}
+    \clearpage
+    \pagenumbering{arabic} 
+}
+\makeatother
