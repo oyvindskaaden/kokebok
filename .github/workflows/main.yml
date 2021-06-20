@@ -29,9 +29,8 @@ jobs:
           
       - name: Push file to latest
         run: |
-          mkdir upload
-          cd upload
           git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/oyvindskaaden/kokebok target
+          cd target
           git switch latest
           cp ../kokebok.pdf ./kokebok.pdf
           git add .
