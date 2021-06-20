@@ -31,11 +31,11 @@ jobs:
         run: |
           git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/oyvindskaaden/kokebok target
           cd target
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git switch latest
           cp ../kokebok.pdf ./kokebok.pdf
           git add .
           git diff-index --quiet HEAD || git commit -m "Automatic publish of latest version ${{ steps.get_version.outputs.VERSION }}"
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git push origin latest
 
