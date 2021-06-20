@@ -28,8 +28,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Push file to latest
+        #git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/oyvindskaaden/kokebok target
         run: |
-          git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/oyvindskaaden/kokebok target
+          git clone https://.:${{ secrets.GITEA_TOKEN }}@git.glados.no/oyvindskaaden/kokebok target
           cd target
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
