@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir upload
           cd upload
-          git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/kokebok target
+          git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/oyvindskaaden/kokebok target
           git switch latest
           cp ../kokebok.pdf ./kokebok.pdf
           git add .
