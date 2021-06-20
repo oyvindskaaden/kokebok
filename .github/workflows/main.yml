@@ -16,19 +16,25 @@ jobs:
         with:
           root_file: kokebok.tex
           
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+        
       - name: GH Release
         uses: softprops/action-gh-release@v0.1.5
         with:
           files: kokebok.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Add & Commit
-        uses: EndBug/add-and-commit@v7.2.1
-        with:
-          # Arguments for the git add command
-          add: kokebok.pdf
-          # Name of the branch to use, if different from the one that triggered the workflow
-          branch: latest
-          # The message for the commit
-          message: Added latest version!
-          #github_token: # optional, default is ${{ github.token }}
+          
+      - name: Push file to latest
+        run: |
+          mkdir upload
+          cd upload
+          git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/kokebok target
+          git switch latest
+          cp ../kokebok.pdf ./kokebok.pdf
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Automatic publish of latest version ${{ steps.get_version.outputs.VERSION }}"
+          git push origin latest
+
