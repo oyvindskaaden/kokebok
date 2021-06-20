@@ -35,5 +35,7 @@ jobs:
           cp ../kokebok.pdf ./kokebok.pdf
           git add .
           git diff-index --quiet HEAD || git commit -m "Automatic publish of latest version ${{ steps.get_version.outputs.VERSION }}"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git push origin latest
 
